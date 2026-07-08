@@ -1,5 +1,17 @@
 from app.models.carrier import Carrier
+from app.models.customer import Customer
+from app.models.delivery import Delivery
+from app.models.delivery_event import DeliveryEvent
+from app.models.driver import Driver
+from app.models.occurrence import Occurrence
+from app.models.truck import Truck
 
 __all__ = [
     "Carrier",
+    "Customer",
+    "Delivery",
+    "DeliveryEvent",
+    "Driver",
+    "Occurrence",
+    "Truck",
 ]
