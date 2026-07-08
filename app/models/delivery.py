@@ -39,6 +39,8 @@ class Delivery(BaseModel, Base):
     driver_id: Mapped[UUID] = mapped_column(ForeignKey("drivers.id"), nullable=False)
     truck_id: Mapped[UUID] = mapped_column(ForeignKey("trucks.id"), nullable=False)
     customer_id: Mapped[UUID] = mapped_column(ForeignKey("customers.id"), nullable=False)
+    route_id: Mapped[UUID] = mapped_column(ForeignKey("routes.id"), nullable=False)
+
 
     carrier = relationship("Carrier", back_populates="deliveries")
     driver = relationship("Driver", back_populates="deliveries")
@@ -48,3 +50,7 @@ class Delivery(BaseModel, Base):
 
     events = relationship("DeliveryEvent", back_populates="delivery")
     occurrences = relationship("Occurrence", back_populates="delivery")
+
+    route = relationship("Route", back_populates="deliveries")
+
+    

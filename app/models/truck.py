@@ -8,6 +8,9 @@ from app.db.base import Base
 from app.models.base import BaseModel
 from app.models.enums import TruckStatus
 
+from datetime import datetime
+from sqlalchemy import DateTime
+
 
 class Truck(BaseModel, Base):
     __tablename__ = "trucks"
@@ -31,6 +34,17 @@ class Truck(BaseModel, Base):
     )
 
     current_speed_kmh: Mapped[int] = mapped_column(nullable=False, default=0)
+
+    odometer_km: Mapped[Decimal] = mapped_column(
+        Numeric(12, 2),
+        nullable=False,
+        default=0,
+    )
+
+    last_maintenance_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True),
+        nullable=True,
+    )
 
     status: Mapped[TruckStatus] = mapped_column(
         Enum(TruckStatus, name="truck_status"),

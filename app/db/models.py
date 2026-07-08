@@ -4,6 +4,7 @@ from app.models.delivery import Delivery
 from app.models.delivery_event import DeliveryEvent
 from app.models.driver import Driver
 from app.models.occurrence import Occurrence
+from app.models.route import Route
 from app.models.truck import Truck
 
 __all__ = [
@@ -13,5 +14,6 @@ __all__ = [
     "DeliveryEvent",
     "Driver",
     "Occurrence",
+    "Route",
     "Truck",
 ]

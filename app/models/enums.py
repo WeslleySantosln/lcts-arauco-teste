@@ -10,8 +10,11 @@ class DriverStatus(str, Enum):
 
 class TruckStatus(str, Enum):
     AVAILABLE = "available"
+    WAITING_LOADING = "waiting_loading"
     LOADING = "loading"
+    LOADED = "loaded"
     IN_TRANSIT = "in_transit"
+    WAITING_UNLOADING = "waiting_unloading"
     UNLOADING = "unloading"
     MAINTENANCE = "maintenance"
     STOPPED = "stopped"
@@ -20,8 +23,12 @@ class TruckStatus(str, Enum):
 class DeliveryStatus(str, Enum):
     CREATED = "created"
     PLANNED = "planned"
+    WAITING_LOADING = "waiting_loading"
     LOADING = "loading"
+    LOADED = "loaded"
     IN_TRANSIT = "in_transit"
+    WAITING_UNLOADING = "waiting_unloading"
+    UNLOADING = "unloading"
     DELIVERED = "delivered"
     DELAYED = "delayed"
     CANCELED = "canceled"

@@ -18,5 +18,9 @@ class Settings(BaseSettings):
         extra="ignore"
     )
 
+    SIMULATION_INTERVAL_SECONDS: int = 1
+    SIMULATION_SPEED_SECONDS: int = 300
+    MAX_ACTIVE_DELIVERIES: int = 20
+
 
 settings = Settings()

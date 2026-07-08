@@ -1,15 +1,19 @@
 from fastapi import FastAPI
 
+import app.db.models
+
+from app.api.routes.analytics import router as analytics_router
 from app.api.routes.system import router as system_router
 from app.core.settings import settings
 
 app = FastAPI(
     title=settings.APP_NAME,
     version=settings.VERSION,
-    description="Logistics Control Tower Simulator"
+    description="Logistics Control Tower Simulator",
 )
 
 app.include_router(system_router)
+app.include_router(analytics_router)
 
 
 @app.get("/")
@@ -18,5 +22,5 @@ async def root():
         "project": settings.APP_NAME,
         "version": settings.VERSION,
         "environment": settings.ENVIRONMENT,
-        "status": "running"
+        "status": "running",
     }
