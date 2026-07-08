@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: lcts_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: lcts
+      POSTGRES_USER: lcts_user
+      POSTGRES_PASSWORD: lcts_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - lcts_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  lcts_postgres_data:
