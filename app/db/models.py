@@ -6,6 +6,7 @@ from app.models.driver import Driver
 from app.models.occurrence import Occurrence
 from app.models.route import Route
 from app.models.truck import Truck
+from app.models.truck_position import TruckPosition
 
 __all__ = [
     "Carrier",
@@ -16,4 +17,5 @@ __all__ = [
     "Occurrence",
     "Route",
     "Truck",
+    "TruckPosition"
 ]

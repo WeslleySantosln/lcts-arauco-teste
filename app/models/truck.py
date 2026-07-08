@@ -58,3 +58,4 @@ class Truck(BaseModel, Base):
     carrier = relationship("Carrier", back_populates="trucks")
     driver = relationship("Driver", back_populates="trucks")
     deliveries = relationship("Delivery", back_populates="truck")
+    positions = relationship("TruckPosition", back_populates="truck")

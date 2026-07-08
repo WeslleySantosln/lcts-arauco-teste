@@ -7,6 +7,11 @@ from app.models.delivery import Delivery
 from app.models.enums import DeliveryStatus, TruckStatus
 from app.models.truck import Truck
 
+from app.models.driver import Driver
+from app.models.carrier import Carrier
+
+
+
 
 def get_dashboard_kpis(db: Session) -> dict:
     today_start = datetime.combine(
@@ -91,3 +96,27 @@ def get_dashboard_kpis(db: Session) -> dict:
         "trucks_in_transit": trucks_in_transit or 0,
         "otif_percent": otif_percent,
     }
+
+
+def get_map_data(db: Session) -> list[dict]:
+    trucks = (
+        db.query(Truck, Driver, Carrier)
+        .join(Driver, Truck.driver_id == Driver.id, isouter=True)
+        .join(Carrier, Truck.carrier_id == Carrier.id, isouter=True)
+        .all()
+    )
+
+    return [
+        {
+            "truck_id": str(truck.id),
+            "plate": truck.plate,
+            "truck_model": truck.model,
+            "status": truck.status.value,
+            "latitude": float(truck.current_latitude),
+            "longitude": float(truck.current_longitude),
+            "speed_kmh": truck.current_speed_kmh,
+            "driver_name": driver.name if driver else None,
+            "carrier_name": carrier.name if carrier else None,
+        }
+        for truck, driver, carrier in trucks
+    ]

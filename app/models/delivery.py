@@ -53,4 +53,5 @@ class Delivery(BaseModel, Base):
 
     route = relationship("Route", back_populates="deliveries")
 
+    positions = relationship("TruckPosition", back_populates="delivery")
     
